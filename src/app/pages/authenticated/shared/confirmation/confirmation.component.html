@@ -1,0 +1,12 @@
+<section class="confirmation-container" >
+    <div class="confirmation-message ">
+        {{confirmationMessage}}?
+    </div>
+    <div class="confirmation-buttons ">
+        <button type="button" class="btn cancelbutton" (click)="emitConfirmSelection(false)">{{cancelButton}}</button>
+
+            <!-- <button type="button" class="btn cancel-button" (click)="emitConfirmSelection(false)">{{cancelButton}}</button> -->
+            <button type="button" class="btn confirmation-button" (click)="emitConfirmSelection(true)">{{confirmButton}}</button>
+
+    </div>
+</section>

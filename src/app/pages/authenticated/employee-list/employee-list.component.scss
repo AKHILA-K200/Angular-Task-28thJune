@@ -1,0 +1,43 @@
+.employee-list{
+    height: 100%;
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    .table-container{
+        width: 80%;
+        height: 30%;
+        max-height: 300px;
+        align-self: center;
+      //  margin: auto;
+    }
+    .employee-header-container{
+        display: flex;
+        justify-content: space-between;
+        .add-employee-container{
+            //  align-self: flex-end;
+          }
+          .search-container{
+            .input-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+              }
+              
+              .input-container .pi-search {
+                position: absolute;
+                left: 10px;
+                font-size: 1.2rem;
+                color: #888;
+              }
+              
+              .input-container input[pInputText] {
+                padding-left: 30px; /* Adjust padding to make room for the icon */
+              }
+              
+          }
+
+    }
+  
+
+}

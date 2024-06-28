@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.bodyfull{
+     margin: 0px;
+    padding: 0px;
+    font-family: 'Railway', sans-serif;
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+    height: 100%;
+
+        .left-section{
+              background: var(--Greyframebg, #252525);
+                width:50%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+               // .top-right-gradient{
+               //    width: 608.479px;
+               //    height: 608.479px;
+               //    flex-shrink: 0;
+               //    border-radius: 608.479px;
+               //    background: rgba(117, 89, 253, 0.20);
+               //    filter: blur(102px);
+               // }  
+               .header{
+                  align-self: center;
+                  margin: auto;
+                  display: flex;
+                  gap:32px;
+                  align-items: center;
+                  .logo{
+                     justify-content: center;
+                  } 
+                  .header_text{
+                     justify-content: center;
+                     color: white;
+                     font-size: 36px;
+                     font-weight: 700;
+
+                  }
+               } 
+             
+    
+        }
+        .right-section{
+         
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+         gap: 1rem;
+         width:50%;
+        align-items: center   ;
+        .login-form{
+         width: 60%;
+         max-width: 400px;
+         margin: auto;
+         display: flex;
+         flex-direction: column;
+         gap: 24px;
+        .input-container{
+         display: flex;
+         gap: 4px;
+         flex-direction: column;
+         .input-label{
+            margin-bottom: 0px;
+         }
+         .input-login{
+            display: flex;
+            width: 100%;
+            height: 56px;
+            min-width: 252px;
+            min-height: 40px;
+            padding: 16px;
+            align-items: center;
+           // height: 35px;
+            border-radius: 4px;
+border: 1px solid var(--Grey-Grey-500, #B7B7B7);
+background: var(--White, #FFF);
+         }
+        }
+        .button-submit{
+         width: 100%;
+         display: inline-flex;
+         height: 56px;
+         padding: 15px 93px;
+         justify-content: center;
+         align-items: center;
+         gap: 10px;
+         flex-shrink: 0;
+         border-radius: 4px;
+         background: var(--Primary, #744EFD);
+         color: white;
+
+         .label-login{
+            color: white;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px; /* 120% */
+         }
+        }
+        }
+        }
+}

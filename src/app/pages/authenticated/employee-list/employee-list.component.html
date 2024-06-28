@@ -1,0 +1,56 @@
+
+  <div class="employee-list">
+    <div class="employee-header-container">
+        <div class="search-container">
+            <div class="card flex justify-content-center">
+                <div class="input-container">
+                  <i class="pi pi-search"></i>
+                  <input type="text" pInputText [(ngModel)]="value" placeholder="Search"  (input)="search()"/>
+                </div>
+              </div>
+              
+        </div>
+        <div class="add-employee-container">
+        
+            <p-button (click)="navigateToCreate()">
+                <i class="pi pi-plus" style="font-size: 1rem"></i>
+              </p-button>
+        </div>
+    </div>
+    
+    <table class="table table-container">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employees of pagedEmployeeList">
+            <!-- <th scope="row">1</th> -->
+            <td>{{employees.EMPLOYEE_NAME}}</td>
+            <td>{{employees.CONTACT_NO}}</td>
+            <td>{{employees.EMAIL}}</td>
+            <td>{{employees.ADDRESS}}</td>
+            <td style="cursor: pointer;" (click)="deleteEmployee(employees)"><i class="pi pi-trash" style="font-size: 1rem;color: red;"></i>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+      <p-paginator 
+  (onPageChange)="onPageChange($event)" 
+  [first]="first"
+  [rows]="rows" 
+  [totalRecords]="totalElements" 
+  [rowsPerPageOptions]="[10, 20, 30]">
+</p-paginator>
+  </div>
+  <p-dialog [(visible)]="isConfirmationVisible" [modal]="true" header="Confirm?" class="confirmation-pop-up-container"     >
+
+    <app-confirmation  [confirmationMessage]="confirmationMessage" [confirmButton]="confirmationButton" [cancelButton]="CloseButton" (selectedOption)="closeConfirmationPopUp($event)"></app-confirmation>
+
+</p-dialog>
