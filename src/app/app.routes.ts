@@ -15,7 +15,7 @@ export const routes: Routes = [
         component:LoginComponent
     },
     {
-        path:'dashboard',
+        path:'',
         component:DashboardComponent,
         children:[
             {

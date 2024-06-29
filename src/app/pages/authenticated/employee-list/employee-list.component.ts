@@ -9,8 +9,9 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmationComponent } from '../shared/confirmation/confirmation.component';
 import { MessageService } from 'primeng/api';
-import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-list',
@@ -22,6 +23,8 @@ import { FormControl } from '@angular/forms';
 export class EmployeeListComponent {
 employeeList!:employeeManagement.employeeList[];
 pagedEmployeeList:employeeManagement.employeeList[] = [];
+searchInput = new Subject<string>();
+
 
 first: number = 0;
 rows: number = 10;
@@ -40,15 +43,18 @@ constructor(private employeeService:EmployeeService,private route:Router,private
 }
   ngOnInit() {
     this.employeeService.setEmployeeList();
-    // this.searchControl.valueChanges
-    //   .pipe(
-    //     debounceTime(300),
-    //     distinctUntilChanged(),
-    //     takeUntil(this.destroy$)
-    //   )
-    //   .subscribe(keyword => this.searchKeyword(keyword));
 
-    this.getEmployeeList();
+    //search
+   this.getEmployeeList();
+   this.searchInput.pipe(
+    debounceTime(400)
+  ).subscribe((searchTerm: string) => {
+   this.search(searchTerm);
+  });
+
+  }
+  onSearchInputChange(searchTerm: any) {
+    this.searchInput.next(searchTerm.target.value);
   }
   getEmployeeList(){
     this.employeeList= JSON.parse(localStorage.getItem("employeeList")!) ;
@@ -60,7 +66,9 @@ constructor(private employeeService:EmployeeService,private route:Router,private
     this.pagedEmployeeList = this.employeeList.slice(this.first, this.first + this.rows);
   }
    navigateToCreate() {
-    this.route.navigate(['dashboard/employee/create']);
+    console.log("navigate");
+    
+    this.route.navigate(['/employee/create']);
   }
  
   onPageChange(event: any) {
@@ -88,16 +96,11 @@ constructor(private employeeService:EmployeeService,private route:Router,private
     this.isConfirmationVisible=true
 
   }
-  search(){
-    // debounceTime(300,
-    //   this.employeeList=  this.employeeService.searchKeyword('john');
-    //   this.totalElements = this.employeeList.length;
-    //   this.updatePagedEmployeeList();
-    // )
-    if(this.value !='')
+  search(searchTerm:string){
+    if(searchTerm !='')
       {
         this.first = 0;
-        this.employeeList=  this.employeeService.searchKeyword('john');
+        this.employeeList=  this.employeeService.searchKeyword(searchTerm);
       this.totalElements = this.employeeList.length;
       this.updatePagedEmployeeList();
       }

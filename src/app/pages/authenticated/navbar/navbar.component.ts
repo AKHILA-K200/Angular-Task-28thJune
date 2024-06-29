@@ -17,11 +17,6 @@ export class NavbarComponent {
   isActive=false;
   sidebarItems = [
     {
-      name: 'Dashboard',
-      icon: 'assets/db-icons/home.svg',
-      route: '/dashboard',
-    },
-    {
       name: 'Employee Listing',
       icon: 'pi pi-database',
       route: 'employee/list',

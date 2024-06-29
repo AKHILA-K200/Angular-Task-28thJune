@@ -5,16 +5,20 @@
             <div class="card flex justify-content-center">
                 <div class="input-container">
                   <i class="pi pi-search"></i>
-                  <input type="text" pInputText [(ngModel)]="value" placeholder="Search"  (input)="search()"/>
+                  <input type="text" pInputText [(ngModel)]="value" placeholder="Search"  (input)="onSearchInputChange($event)"
+                  />
                 </div>
               </div>
               
         </div>
         <div class="add-employee-container">
         
-            <p-button (click)="navigateToCreate()">
-                <i class="pi pi-plus" style="font-size: 1rem"></i>
-              </p-button>
+            <button (click)="navigateToCreate()" class="add-employee-button" >
+                <div style="color: white;">
+                    <i class="pi pi-plus" style="font-size: 1rem"></i> Add Employee
+
+                </div>
+              </button>
         </div>
     </div>
     
@@ -46,7 +50,8 @@
   [first]="first"
   [rows]="rows" 
   [totalRecords]="totalElements" 
-  [rowsPerPageOptions]="[10, 20, 30]">
+  [rowsPerPageOptions]="[10, 20, 30]"
+ >
 </p-paginator>
   </div>
   <p-dialog [(visible)]="isConfirmationVisible" [modal]="true" header="Confirm?" class="confirmation-pop-up-container"     >

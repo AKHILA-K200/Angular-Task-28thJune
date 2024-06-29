@@ -42,7 +42,7 @@ export class LoginComponent {
        
     if(isUserLogin){
           localStorage.setItem('role','Admin');      
-          this.rouetr.navigate(['/dashboard']);
+          this.rouetr.navigate(['/employee/list']);
       
         }
         else{
